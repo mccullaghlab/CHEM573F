@@ -1,0 +1,10 @@
+%nprocshared=2
+%mem=2GB
+%chk=h2o_tdc_calc.chk
+# b3lyp/6-31g* freq=(Raman) iop(7/33=1) nosymm geom=check guess=read
+
+
+H2O TD Calc
+
+0 1
+
