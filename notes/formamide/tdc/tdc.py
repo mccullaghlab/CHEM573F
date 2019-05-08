@@ -5,7 +5,7 @@ import matplotlib.cm as cm
 
 c = 2.99792458e10 # cm-sec-1
 energyConvert = 6.02214E46   # convert from J/amu/A^2 to 1/sec^2
-convert = 1E30*(3.1625E-25)**2
+convert = 9.37891E-20 # = 1E30*(3.1625E-25)**2 to convert from D^2/A^5/amu to J/A^2/amu
 dipoleUnitConvert = 1.0/np.sqrt(42.2561)
 fwhm_to_sigma = 1.0/(8.0*np.sqrt(np.log(2.0)))
 gauss_const = 1.0/np.sqrt(2*np.pi)
@@ -153,8 +153,6 @@ class freq:
         
 class tdc:
 
-    convert = 1E30*(3.1625E-25)**2
-
     def __init__ (self,monomerFreq,multimerPos):
 
         self.nAtoms = multimerPos.shape[0]
@@ -183,10 +181,11 @@ class tdc:
                     meanCenteredCoord = np.copy(multimerPos[mol2*monomerFreq.nAtoms:(mol2+1)*monomerFreq.nAtoms,:])
                     mol2Mean = np.mean(meanCenteredCoord,axis=0)
                     meanCenteredCoord -= mol2Mean
+                    r = mol2Mean - mol1Mean
                     vals, mol2MolecularBasis = np.linalg.eigh( np.dot(meanCenteredCoord.T, meanCenteredCoord) )
                     for mode2 in range(monomerFreq.nModes):
                         u2 = np.dot(mol2MolecularBasis,monomerFreq.dipoleDerivativeMolecularBasis[:,mode2])
-                        r = mol2Mean - mol1Mean
+                        #print(np.dot(u1,u2), np.dot(u1,r),np.dot(u2,r))
                         self.V[mol1*monomerFreq.nModes+mode1, mol2*monomerFreq.nModes + mode2] = self.tdc_coupling(u1,u2,r)
                         # symmetrize
                         self.V[mol2*monomerFreq.nModes+mode2, mol1*monomerFreq.nModes + mode1] = self.V[mol1*monomerFreq.nModes+mode1, mol2*monomerFreq.nModes + mode2] 
