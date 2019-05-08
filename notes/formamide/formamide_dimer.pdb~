@@ -1,0 +1,16 @@
+TITLE
+ATOM      1  C1  MET S   1       0.000   0.421   0.000
+ATOM      2  O2  LEU S   1       1.199   0.227   0.000
+ATOM      3  N3  ALA S   1      -0.940  -0.558   0.000
+ATOM      4  H4  LYS S   1      -0.437   1.436   0.000
+ATOM      5  H5  ARG S   1      -1.925  -0.346   0.000
+ATOM      6  H6  ILE S   1      -0.648  -1.525   0.000
+
+title
+ATOM      1  C1  MET S   1       0.298   0.298   5.000
+ATOM      2  O2  LEU S   1       1.008  -0.687   5.000
+ATOM      3  N3  ALA S   1      -1.059   0.270   5.000
+ATOM      4  H4  LYS S   1       0.706   1.324   5.000
+ATOM      5  H5  ARG S   1      -1.606   1.117   5.000
+ATOM      6  H6  ILE S   1      -1.537  -0.620   5.000
+END
